@@ -1,0 +1,15 @@
+runall: run
+
+run: task2c.o LineParser.o
+	gcc -m32 -g -Wall -o run task2c.o LineParser.o
+	
+LineParser.o: LineParser.c LineParser.h
+	gcc -m32 -Wall -ansi -c -nostdlib -fno-stack-protector LineParser.c -o LineParser.o
+
+task2c.o: task2c.c
+	gcc -m32 -Wall -ansi -c -nostdlib -fno-stack-protector task2c.c -o task2c.o 
+
+.PHONY: clean
+
+clean: 
+	rm -f *.o run
